@@ -211,6 +211,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51d548dc641a55842a9314992e26322b, type: 3}
+--- !u!4 &154674770 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2911848887635366441, guid: 51d548dc641a55842a9314992e26322b,
+    type: 3}
+  m_PrefabInstance: {fileID: 154674769}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &447394603
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,7 +450,7 @@ MonoBehaviour:
   prefabs:
   - {fileID: 695995365}
   locations: []
-  parent: {fileID: 695995364}
+  parent: {fileID: 154674770}
   randomArea: {x: 5, y: 0, z: 5}
 --- !u!1 &1161705880
 GameObject:
