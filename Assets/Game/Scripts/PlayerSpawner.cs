@@ -7,6 +7,9 @@ public class PlayerSpawner : Spawner<PlayerController>
     //public List<Color> colors = new List<Color>();
     public Color[] colors2;
 
+    override protected void Init() {
+	}
+
     // Start is called before the first frame update
     void Start()
     {
