@@ -7,8 +7,7 @@ public class InteractiveObject : MonoBehaviour
 {
     public PlayerController assignedPlayer;
 
-    public delegate void ActionSuccess();
-    public static event ActionSuccess BroadCastSuccess;
+
 
     public bool IsAssigned { get; private set; } = false;
     public bool IsTaskInProgress { get; private set; } = false;
@@ -79,7 +78,7 @@ public class InteractiveObject : MonoBehaviour
     void TaskCompleted()
     {
         PC.UnlockPlayer();
-        if (BroadCastSuccess != null) { BroadCastSuccess(); }
+        EventBus.PlayerScored(PC, Points);
         Reset();
     }
 
