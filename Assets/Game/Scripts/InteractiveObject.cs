@@ -6,7 +6,7 @@ using UnityEngine;
 public class InteractiveObject : MonoBehaviour
 {
     public PlayerController assignedPlayer;
-
+    private TextMesh SecondsRemainingText;
 
 
     public bool IsAssigned { get; private set; } = false;
@@ -29,10 +29,17 @@ public class InteractiveObject : MonoBehaviour
     }
     void Update()
     {
-        if (TaskTimerActive && Time.time >= TaskTargetTime) {
+        if (TaskTimerActive)
+        {
+            SetTaskTimeRemainingText(TaskTargetTime-Time.time);
+            if (Time.time >= TaskTargetTime)
+            {
                 TaskTimerActive = false;
+                SetTaskTimeRemainingText(0);
                 TaskCompleted();
+            }
         }
+            
         if (CooldownTimerActive && Time.time >= CooldownTargetTime)
         {
             CooldownTimerActive = false;
@@ -47,6 +54,7 @@ public class InteractiveObject : MonoBehaviour
         IsAssigned = true;
         assignedPlayer = Player;
         SetColor(Player.GetPlayerColor());
+        SetTaskTimeRemainingText(TaskDuration);
     }
 
     //when player enters trigger, check if its the correct player and if so start task
@@ -103,4 +111,19 @@ public class InteractiveObject : MonoBehaviour
     {
         GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", newColor);
     }
+
+    void SetTaskTimeRemainingText(float Time)
+    {
+        //find text mesh if no reference exists yet
+        if (SecondsRemainingText == null)
+        {
+            SecondsRemainingText = GetComponentInChildren<TextMesh>();
+        }
+        if (SecondsRemainingText == null) { Debug.LogWarning("Couldn't find a TextMesh component in child"); return; }
+
+        //return time + "sec" or nothing if time is 0
+        if (Time == 0) { SecondsRemainingText.text = ""; return; } 
+        SecondsRemainingText.text = Time.ToString("F1")+ " sec";
+    }
+
 }

@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public int id = 1;
     public bool HasTaskAssigned = false;
     public bool IsWorkingOnTask { get; private set; }  = false;
-    public void LockPlayer() { IsWorkingOnTask = true; }
+    public void LockPlayer() { IsWorkingOnTask = true; isRunning = false; }
     public void UnlockPlayer() { IsWorkingOnTask = false; }
     public GameObject Cap;
 
