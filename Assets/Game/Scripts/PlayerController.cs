@@ -30,10 +30,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if (IsWorkingOnTask == false)
+        {
+            MoveCharacter();
+        }
+        
     }
 
-    void Move() {
+    void MoveCharacter()
+    {
         float hAxis = Input.GetAxis("Horizontal" + id) * speed;
         float vAxis = -Input.GetAxis("Vertical" + id) * speed;
 
@@ -41,7 +46,6 @@ public class PlayerController : MonoBehaviour
 
         isRunning = hAxis != 0 || vAxis != 0;
     }
-
     public void SetPlayerColor(Color newColor)
     {
         PlayerColor = newColor;
