@@ -20,15 +20,19 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        float hAxis = Input.GetAxis("Horizontal" + id) * speed;
-        float vAxis = -Input.GetAxis("Vertical" + id) * speed;
-
-
-
-        transform.Translate(hAxis * Time.deltaTime, 0, vAxis * Time.deltaTime);
+        if (IsWorkingOnTask == false)
+        {
+            MoveCharacter();
+        }
+        
     }
 
+    void MoveCharacter()
+    {
+        float hAxis = Input.GetAxis("Horizontal" + id) * speed;
+        float vAxis = -Input.GetAxis("Vertical" + id) * speed;
+        transform.Translate(hAxis * Time.deltaTime, 0, vAxis * Time.deltaTime);
+    }
     public void SetPlayerColor(Color newColor)
     {
         PlayerColor = newColor;
