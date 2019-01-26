@@ -4,6 +4,11 @@ public class PlayerController : MonoBehaviour
 {
 
     public float speed = 18;
+<<<<<<< HEAD
+=======
+    public Color PlayerColor = new Color(1, 0, 0, 1);
+<<<<<<< HEAD
+>>>>>>> f9dbaac7fd2d9edc17d4bb5ce6ba898d50bb4083
     public int inputID = 1;
 
     // Update is called once per frame

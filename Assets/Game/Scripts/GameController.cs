@@ -4,36 +4,29 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public Transform InteractiveObjectGrouper;
-
-    private InteractiveObject[] IOArray;
+    public int numberOfPlayers = 4;
+    private Color[] PlayerColors = { Color.green, Color.magenta, Color.yellow, Color.blue };
+    private Vector3[] StartPositions = { new Vector3(0, 1, 0), new Vector3(1, 0, 0), new Vector3(-1, 0, 0), new Vector3(0, -1, 0) };
+    //allows you to put a ref to player prefab in the gamecontroller
+    public GameObject PlayerCharacterPrefab;
 
 
     void Start()
     {
-        GatherInteractiveObjects();
-
+        for (int p = 0; p < numberOfPlayers; p++)
+        {
+            GameObject PlayerCharacter = Instantiate(PlayerCharacterPrefab);
+            PlayerCharacter.GetComponent<PlayerController>().PlayerColor = PlayerColors[p];
+            //PlayerCharacter.transform.position = StartPositions[p];
+        }
     }
 
 
     void Update()
     {
-        //TODO Set interactive object target for a player
+       
     }
 
 
-    //get all interactive objects that are parented to the IOGrouper
-    void GatherInteractiveObjects()
-    {
-        if (InteractiveObjectGrouper != null)
-        {
-            IOArray = InteractiveObjectGrouper.GetComponentsInChildren<InteractiveObject>();
-            if (IOArray.Length == 0) { Debug.LogWarning("No interactive objects found under interactive object grouper"); }
-        }
-        else
-        {
-            Debug.LogWarning("No Interactive Objects grouper reference set on game controller");
-        }
-        return;
-    }
+    
 }
