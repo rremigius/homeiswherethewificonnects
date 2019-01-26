@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     public bool IsWorkingOnTask { get; private set; }  = false;
     public void LockPlayer() { IsWorkingOnTask = true; }
     public void UnlockPlayer() { IsWorkingOnTask = false; }
-    
+    public GameObject Cap;
+
     private Color PlayerColor;
     private Animator animator;
     private bool _isRunning;
@@ -49,7 +50,7 @@ public class PlayerController : MonoBehaviour
     public void SetPlayerColor(Color newColor)
     {
         PlayerColor = newColor;
-        GetComponent<MeshRenderer>().material.SetColor("_Color", newColor);
+        Cap.GetComponent<MeshRenderer>().material.SetColor("_Color", newColor);
     }
     public Color GetPlayerColor()
     {

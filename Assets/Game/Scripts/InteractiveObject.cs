@@ -56,7 +56,7 @@ public class InteractiveObject : MonoBehaviour
         if (IsColliderAssignedPlayer(other) && IsTaskInProgress==false)
         {
             PC = other.gameObject.GetComponent<PlayerController>();
-            StartTask();
+            if (PC != null) { StartTask(); }
         }
     }
     private bool IsColliderAssignedPlayer(Collider other)
