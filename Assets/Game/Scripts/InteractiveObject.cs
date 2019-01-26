@@ -7,18 +7,20 @@ public class InteractiveObject : MonoBehaviour
 {
     public PlayerController assignedPlayer;
 
-    public delegate void ActionSuccess();
-    public static event ActionSuccess BroadCastSuccess;
+
 
     public bool IsAssigned { get; private set; } = false;
     public bool IsTaskInProgress { get; private set; } = false;
     public float TaskDuration = 1;
+    public float CooldownDuration = 5;
     public float Points = 10;
     
 
     private PlayerController PC;
-    private float TargetTime;
-    private bool TimerActive = false;
+    private float TaskTargetTime;
+    private float CooldownTargetTime;
+    private bool TaskTimerActive = false;
+    private bool CooldownTimerActive = false;
     private Color UnhighlightedColor = new Color(0, 0, 0, 0);
 
     void Start()
@@ -27,19 +29,24 @@ public class InteractiveObject : MonoBehaviour
     }
     void Update()
     {
-        if (TimerActive && Time.time >= TargetTime) {
-                TimerActive = false;
+        if (TaskTimerActive && Time.time >= TaskTargetTime) {
+                TaskTimerActive = false;
                 TaskCompleted();
         }
-        
+        if (CooldownTimerActive && Time.time >= CooldownTargetTime)
+        {
+            CooldownTimerActive = false;
+            CooldownCompleted();
+        }
+
     }
 
     //Arms this interactive object with a char reference and a highlight, it can now be overlapped with
-    public void AssignTask(PlayerController Player,Color PlayerColor)
+    public void AssignTask(PlayerController Player)
     {
         IsAssigned = true;
         assignedPlayer = Player;
-        SetColor(PlayerColor);
+        SetColor(Player.GetPlayerColor());
     }
 
     //when player enters trigger, check if its the correct player and if so start task
@@ -48,7 +55,7 @@ public class InteractiveObject : MonoBehaviour
         if (IsColliderAssignedPlayer(other) && IsTaskInProgress==false)
         {
             PC = other.gameObject.GetComponent<PlayerController>();
-            StartTask();
+            if (PC != null) { StartTask(); }
         }
     }
     private bool IsColliderAssignedPlayer(Collider other)
@@ -63,24 +70,33 @@ public class InteractiveObject : MonoBehaviour
         PC.LockPlayer();
         
         //Activate minigame
-        TargetTime = Time.time + TaskDuration;
-        TimerActive = true;
+        TaskTargetTime = Time.time + TaskDuration;
+        TaskTimerActive = true;
         
     }
 
     void TaskCompleted()
     {
         PC.UnlockPlayer();
-        BroadCastSuccess();
+        EventBus.PlayerScored(PC, Points);
         Reset();
     }
 
     void Reset()
     {
+        assignedPlayer.HasTaskAssigned = false;
         assignedPlayer = null;
         IsTaskInProgress = false;
-        IsAssigned = false;
+
+        CooldownTargetTime = Time.time + CooldownDuration;
+        CooldownTimerActive = true;
+
         SetColor(UnhighlightedColor);
+    }
+
+    void CooldownCompleted()
+    {
+        IsAssigned = false;
     }
 
     void SetColor(Color newColor)
