@@ -6,7 +6,7 @@ using UnityEngine.Assertions;
 public class GameController : MonoBehaviour
 {
     public int numberOfPlayers = 4;
-    public Spawner playerSpawner;
+    public PlayerSpawner playerSpawner;
     private TaskManager MyTaskManager;
 
     void Start()

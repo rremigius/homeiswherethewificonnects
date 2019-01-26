@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 
     public float speed = 18;
     public Color PlayerColor = new Color(1, 0, 0, 1);
-    public int inputID = 1;
+    public int id = 1;
     public bool IsBusy { get; private set; }  = false;
     public void LockPlayer() { IsBusy = true; }
     public void UnlockPlayer() { IsBusy = false; }
@@ -14,10 +14,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        float hAxis = Input.GetAxis("Horizontal" + inputID) * speed;
-        float vAxis = -Input.GetAxis("Vertical" + inputID) * speed;
-
-
+        float hAxis = Input.GetAxis("Horizontal" + id) * speed;
+        float vAxis = -Input.GetAxis("Vertical" + id) * speed;
 
         transform.Translate(hAxis * Time.deltaTime, 0, vAxis * Time.deltaTime);
     }
