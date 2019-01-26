@@ -7,10 +7,8 @@ public class PlayerSpawner : Spawner<PlayerController>
     public List<Color> colors = new List<Color>();
     public Color[] colors2 = { Color.yellow, Color.green, Color.magenta, Color.blue };
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    override protected void Init() {
+
     }
 
     // Update is called once per frame
