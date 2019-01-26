@@ -11,6 +11,7 @@ public class InteractiveObject : MonoBehaviour
     public static event ActionSuccess BroadCastSuccess;
 
     public bool IsOccupied { get; private set; }
+    public float TaskDuration;
 
     InteractiveObject() // set defaults
     {
