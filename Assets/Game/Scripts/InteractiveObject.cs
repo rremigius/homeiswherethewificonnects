@@ -5,13 +5,17 @@ using UnityEngine;
 
 public class InteractiveObject : MonoBehaviour
 {
-    public float nummertje;
     public PlayerController assignedPlayer;
 
     public delegate void ActionSuccess();
     public static event ActionSuccess BroadCastSuccess;
-        
 
+    public bool IsOccupied { get; private set; }
+
+    InteractiveObject() // set defaults
+    {
+        IsOccupied = false;
+    }
     void Start()
     {
         //TODO check if box component available of requirement/required component bovenaan class
@@ -23,17 +27,19 @@ public class InteractiveObject : MonoBehaviour
     {
         if (IsColliderAssignedPlayer(other))
         {
+            IsOccupied = true;
             //Activate minigame
             //If Succesfull
+            IsOccupied = false;
             BroadCastSuccess();
         }
     }
 
     private bool IsColliderAssignedPlayer(Collider other)
     {
-        return (assignedPlayer == other);
+        return assignedPlayer == other.gameObject.GetComponent<PlayerController>();
     }
 
- 
+    
 
 }
