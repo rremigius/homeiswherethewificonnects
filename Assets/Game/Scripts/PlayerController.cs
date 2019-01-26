@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
     public void LockPlayer() { IsWorkingOnTask = true; }
     public void UnlockPlayer() { IsWorkingOnTask = false; }
 
+    void Start() {
+        
+    }
+
     // Update is called once per frame
     void Update()
     {

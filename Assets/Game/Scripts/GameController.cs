@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
         //Assert.IsNotNull(playerSpawner);
         List<PlayerController> Players = playerSpawner.Spawn(numberOfPlayers);
         MyTaskManager = GetComponent<TaskManager>();
-        MyTaskManager.StartTaskManager(Players);
+
     }
 
 
