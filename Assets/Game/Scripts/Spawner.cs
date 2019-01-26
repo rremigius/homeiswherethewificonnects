@@ -64,6 +64,7 @@ public class Spawner<T> : MonoBehaviour where T:MonoBehaviour
             // Create the new object under the given parent
             T newObj = CreateNewObject();
             newObj.transform.parent = parent;
+            newObj.transform.rotation = parent.rotation;
             
             // First pick a location
             Transform location = GetNewLocation();
