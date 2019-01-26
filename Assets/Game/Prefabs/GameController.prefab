@@ -71,6 +71,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c02cc9c5d476d23408b7b94680989094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs: []
-  locations: []
+  prefabs:
+  - {fileID: 581722222582498536, guid: b74c812832fc3aa4f85d96849e4aa985, type: 3}
+  locations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   parent: {fileID: 0}
+  colors: []
