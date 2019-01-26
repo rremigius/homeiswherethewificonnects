@@ -16,11 +16,9 @@ public class FollowNose : MonoBehaviour
     void Update()
     {
         Vector3 velocity = transform.position - previousPosition;
-        if(velocity.x > 0 || velocity.z > 0) {
+        if(Mathf.Abs(velocity.x) > 0.01f || Mathf.Abs(velocity.z) > 0.01f) {
             velocity.y = 0;
-            Debug.Log(velocity);
-            Vector3 direction = velocity.normalized;
-            transform.rotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.LookRotation(velocity);
         }
         previousPosition = transform.position;
     }

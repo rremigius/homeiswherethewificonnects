@@ -12,9 +12,19 @@ public class PlayerController : MonoBehaviour
     public void UnlockPlayer() { IsWorkingOnTask = false; }
     
     private Color PlayerColor;
+    private Animator animator;
+    private bool _isRunning;
+
+    public bool isRunning {
+        get => _isRunning;
+        set {
+            animator.SetBool("Running", value);
+            _isRunning = value;
+        }
+    }
 
     void Start() {
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -33,6 +43,8 @@ public class PlayerController : MonoBehaviour
         float vAxis = -Input.GetAxis("Vertical" + id) * speed;
 
         transform.Translate(hAxis * Time.deltaTime, 0, vAxis * Time.deltaTime, Space.World);
+
+        isRunning = hAxis != 0 || vAxis != 0;
     }
     public void SetPlayerColor(Color newColor)
     {
