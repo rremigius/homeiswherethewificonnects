@@ -16,10 +16,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         Assert.IsNotNull(playerSpawner);
-
-        for (int p = 0; p < numberOfPlayers; p++) {
-            playerSpawner.Spawn();
-        }
+        playerSpawner.Spawn(numberOfPlayers);
     }
 
 
