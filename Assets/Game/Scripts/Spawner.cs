@@ -19,10 +19,19 @@ public class Spawner<T> : MonoBehaviour where T:MonoBehaviour
     [Tooltip("The distance for each dimension in which the position can be randomly chosen.")]
     public Vector3 randomArea;
 
+    [Tooltip("The area outside which the Spawner is allowed to spawn objects.")]
+    public Vector3 outsideArea;
+
+    [Tooltip("If the interval is set to a value higher than 0, a new object will be spawned every interval.")]
+    public float interval = 0;
+
+    [Tooltip("The probability that an object will spawn within a second.")]
+    public float probability = 0f;
+
     int next = 0;
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         Init();
         if(spawnOnStart > 0) {
