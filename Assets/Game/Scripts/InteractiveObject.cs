@@ -35,11 +35,11 @@ public class InteractiveObject : MonoBehaviour
     }
 
     //Arms this interactive object with a char reference and a highlight, it can now be overlapped with
-    public void AssignTask(PlayerController Player,Color PlayerColor)
+    public void AssignTask(PlayerController Player)
     {
         IsAssigned = true;
         assignedPlayer = Player;
-        SetColor(PlayerColor);
+        SetColor(Player.GetPlayerColor());
     }
 
     //when player enters trigger, check if its the correct player and if so start task
@@ -71,7 +71,7 @@ public class InteractiveObject : MonoBehaviour
     void TaskCompleted()
     {
         PC.UnlockPlayer();
-        BroadCastSuccess();
+        if (BroadCastSuccess != null) { BroadCastSuccess(); }
         Reset();
     }
 

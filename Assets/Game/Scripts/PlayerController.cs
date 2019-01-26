@@ -4,15 +4,9 @@ public class PlayerController : MonoBehaviour
 {
 
     public float speed = 18;
-    public Color PlayerColor
-    {
-        get => PlayerColor;
-        set
-        {
-            GetComponent<MeshRenderer>().material.SetColor("_Color", value);
-            PlayerColor = value;
-        }
-    }
+    private Color PlayerColor;
+  
+
     public int id = 1;
     public bool HasTaskAssigned = false;
     public bool IsWorkingOnTask { get; private set; }  = false;
@@ -33,7 +27,12 @@ public class PlayerController : MonoBehaviour
 
     public void SetPlayerColor(Color newColor)
     {
+        PlayerColor = newColor;
         GetComponent<MeshRenderer>().material.SetColor("_Color", newColor);
+    }
+    public Color GetPlayerColor()
+    {
+        return PlayerColor;
     }
 
 }
