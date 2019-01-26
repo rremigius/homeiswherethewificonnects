@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSpawner : Spawner
+public class PlayerSpawner : Spawner<PlayerController>
 {
-    
-
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +13,10 @@ public class PlayerSpawner : Spawner
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    override protected void AfterSpawn(PlayerController player, int index) {
         
     }
 }

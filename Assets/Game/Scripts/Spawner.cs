@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class Spawner<T> : MonoBehaviour where T:MonoBehaviour
 {
-    public List<GameObject> prefabs;
+    public List<T> prefabs;
     public List<Transform> locations;
     public Transform parent;
 
@@ -22,31 +22,34 @@ public class Spawner : MonoBehaviour
         
     }
 
-    GameObject CreateNewObject() {
+    T CreateNewObject() {
         int objIndex = next % prefabs.Count;
-        return Instantiate(prefabs[objIndex]);
+        return Instantiate(prefabs[objIndex].GetComponent<T>());
     }
 
     Transform GetNewLocation() {
+        if(locations.Count == 0) return transform;
+
         int locationIndex = next % locations.Count;
         return locations[locationIndex];
     }
 
-    protected virtual void AfterSpawn(GameObject gameObject, int index) {}
+    protected virtual void AfterSpawn(T spawned, int index) {}
 
-    public List<GameObject> Spawn(int count = 1) {
+    public List<T> Spawn(int count = 1) {
         if(prefabs.Count == 0) {
             Debug.LogError("Cannot spawn. No prefabs specified.");
             return null;
         }
         
-        List<GameObject> spawned = new List<GameObject>();
+        List<T> spawned = new List<T>();
         for(int i = 0; i < count; i++) {
-            GameObject newObj = CreateNewObject();
+            T newObj = CreateNewObject();
             Transform location = GetNewLocation();
             newObj.transform.parent = parent;
             newObj.transform.position = location.position;
 
+            AfterSpawn(newObj, next++);
             spawned.Add(newObj);
         }
 
