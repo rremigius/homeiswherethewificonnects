@@ -5,32 +5,25 @@ using UnityEngine;
 public class PlayerSpawner : Spawner<PlayerController>
 {
     //public List<Color> colors = new List<Color>();
-    public Color[] colors2;
+    public Color[] colors;
 
     override protected void Init() {
+        if (colors.Length==0) {
+            colors = new Color[] { Color.yellow, Color.red, Color.magenta, Color.cyan };
+        }
 	}
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (colors2.Length==0)
-        {
-            colors2 = new Color[] { Color.yellow, Color.red, Color.magenta, Color.cyan };
-        }
-    }
-
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         
     }
 
     override protected void AfterSpawn(PlayerController player, int index) {
-        if(colors2.Length == 0) {
+        if(colors.Length == 0) {
             return;
         }
 
-        Color color = colors2[index % colors2.Length];
+        Color color = colors[index % colors.Length];
         player.SetPlayerColor(color);
         player.id = index+1;
     }
