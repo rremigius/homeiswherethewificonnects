@@ -8,6 +8,7 @@ public class BalancePlatform : MonoBehaviour
 {
     public Collider tiltLimits;
     public Rigidbody applyForceTo;
+    private float force = 0.5f;
 
     Rigidbody body;
     new Collider collider;
@@ -27,7 +28,15 @@ public class BalancePlatform : MonoBehaviour
         ApplyForce();
     }
 
-    void ApplyForce() {
+    float AngleFrom0(float angle) {
+        return angle < 180 ? angle : angle-360;
+    }
 
+    void ApplyForce() {
+        if(applyForceTo) {
+            Vector3 tilt = transform.rotation.eulerAngles;
+            Vector3 direction = new Vector3(-AngleFrom0(tilt.z), 0, AngleFrom0(tilt.x));
+            applyForceTo.AddForce(direction * force);
+        }
     }
 }
