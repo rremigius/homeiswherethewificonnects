@@ -6,14 +6,17 @@ using UnityEngine.Assertions;
 public class GameController : MonoBehaviour
 {
     public int numberOfPlayers = 4;
-    public Spawner playerSpawner;
+    private PlayerSpawner playerSpawner;
     private TaskManager MyTaskManager;
+    
 
     void Start()
     {
-        Assert.IsNotNull(playerSpawner);
-        var Players = playerSpawner.Spawn(numberOfPlayers);
+        playerSpawner = GetComponent<PlayerSpawner>();
+        //Assert.IsNotNull(playerSpawner);
+        List<PlayerController> Players = playerSpawner.Spawn(numberOfPlayers);
         MyTaskManager = GetComponent<TaskManager>();
+        MyTaskManager.StartTaskManager(Players);
     }
 
 

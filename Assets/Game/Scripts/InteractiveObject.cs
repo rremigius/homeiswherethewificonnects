@@ -10,7 +10,8 @@ public class InteractiveObject : MonoBehaviour
     public delegate void ActionSuccess();
     public static event ActionSuccess BroadCastSuccess;
 
-    public bool IsOccupied { get; private set; } = false;
+    public bool IsAssigned { get; private set; } = false;
+    public bool IsTaskInProgress { get; private set; } = false;
     public float TaskDuration = 1;
     public float Points = 10;
     
@@ -36,6 +37,7 @@ public class InteractiveObject : MonoBehaviour
     //Arms this interactive object with a char reference and a highlight, it can now be overlapped with
     public void AssignTask(PlayerController Player,Color PlayerColor)
     {
+        IsAssigned = true;
         assignedPlayer = Player;
         SetColor(PlayerColor);
     }
@@ -43,7 +45,7 @@ public class InteractiveObject : MonoBehaviour
     //when player enters trigger, check if its the correct player and if so start task
     private void OnTriggerEnter(Collider other)
     {
-        if (IsColliderAssignedPlayer(other) && IsOccupied==false)
+        if (IsColliderAssignedPlayer(other) && IsTaskInProgress==false)
         {
             PC = other.gameObject.GetComponent<PlayerController>();
             StartTask();
@@ -57,7 +59,7 @@ public class InteractiveObject : MonoBehaviour
 
     void StartTask()
     {
-        IsOccupied = true;
+        IsTaskInProgress = true;
         PC.LockPlayer();
         
         //Activate minigame
@@ -76,7 +78,8 @@ public class InteractiveObject : MonoBehaviour
     void Reset()
     {
         assignedPlayer = null;
-        IsOccupied = false;
+        IsTaskInProgress = false;
+        IsAssigned = false;
         SetColor(UnhighlightedColor);
     }
 
