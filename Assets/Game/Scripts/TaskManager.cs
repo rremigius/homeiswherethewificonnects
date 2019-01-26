@@ -5,16 +5,17 @@ using UnityEngine;
 public class TaskManager : MonoBehaviour
 {
     private bool Active = false;
-    private PlayerController[] Players;
+    private List<PlayerController> Players;
 
     public Transform InteractiveObjectGrouper;
     private InteractiveObject[] IOArray;
 
 
-    void StartTaskManager(PlayerController[] activePlayers)
+    public void StartTaskManager(List<PlayerController> activePlayers)
     {
         Active = true;
         Players = activePlayers;
+        List<PlayerController> IdlePlayers = GetPlayersWithoutTask();
     }
     
     
@@ -47,5 +48,15 @@ public class TaskManager : MonoBehaviour
             Debug.LogWarning("No Interactive Objects grouper reference set on game controller");
         }
         return;
+    }
+
+    List<PlayerController> GetPlayersWithoutTask()
+    {
+        List<PlayerController> IdlePlayers = new List<PlayerController>();
+        foreach (PlayerController Player in Players )
+        {
+            if (!Player.HasTaskAssigned) { IdlePlayers.Add(Player); }
+        }
+        return IdlePlayers;
     }
 }
