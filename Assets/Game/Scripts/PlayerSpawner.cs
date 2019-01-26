@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerSpawner : Spawner<PlayerController>
 {
-    public List<Color> colors;
+    public List<Color> colors = new List<Color>();
+    public Color[] colors2 = { Color.yellow, Color.green, Color.magenta, Color.blue };
 
     // Start is called before the first frame update
     void Start()
@@ -19,11 +20,12 @@ public class PlayerSpawner : Spawner<PlayerController>
     }
 
     override protected void AfterSpawn(PlayerController player, int index) {
-        if(colors.Count == 0) {
+        if(colors2.Length == 0) {
             return;
         }
 
-        Color color = colors[index % colors.Count];
+        Color color = colors2[index % colors2.Length];
+        player.SetPlayerColor(color);
         player.id = index+1;
     }
 }

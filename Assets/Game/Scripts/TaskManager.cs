@@ -15,7 +15,7 @@ public class TaskManager : MonoBehaviour
     {
         Active = true;
         Players = activePlayers;
-        List<PlayerController> IdlePlayers = GetPlayersWithoutTask();
+      
     }
     
     
@@ -30,7 +30,7 @@ public class TaskManager : MonoBehaviour
     {
         if (Active)
         {
-
+            AssignTasks();
 
         }
     }
@@ -59,4 +59,35 @@ public class TaskManager : MonoBehaviour
         }
         return IdlePlayers;
     }
+
+    List<InteractiveObject> GetFreeInteractiveObjects()
+    {
+        List<InteractiveObject> IdleObjects = new List<InteractiveObject>();
+        foreach (InteractiveObject IO in IOArray)
+        {
+            if (!IO.IsAssigned) { IdleObjects.Add(IO); }
+        }
+        return IdleObjects;
+    }
+
+    //find idle players and free objects and combine them
+    void AssignTasks()
+    {
+        List<PlayerController> IdlePlayers = GetPlayersWithoutTask();
+        List<InteractiveObject> IdleObjects = GetFreeInteractiveObjects();
+        foreach (PlayerController IdleP in IdlePlayers)
+        {
+            if (IdleObjects.Count > 0)
+            {
+                IdleObjects[0].AssignTask(IdleP);
+                IdleP.HasTaskAssigned = true;
+                IdleObjects.RemoveAt(0);
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
 }

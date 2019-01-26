@@ -10,8 +10,10 @@ public class PlayerController : MonoBehaviour
     public bool IsWorkingOnTask { get; private set; }  = false;
     public void LockPlayer() { IsWorkingOnTask = true; }
     public void UnlockPlayer() { IsWorkingOnTask = false; }
-
+    
+    private Color PlayerColor;
     bool _isRunning = false;
+    
     public bool isRunning { 
         get => _isRunning; 
         set {
@@ -21,16 +23,6 @@ public class PlayerController : MonoBehaviour
     }
 
     Animator animator;
-
-    public Color PlayerColor
-    {
-        get => PlayerColor;
-        set
-        {
-            GetComponent<MeshRenderer>().material.SetColor("_Color", value);
-            PlayerColor = value;
-        }
-    }
 
     void Start() {
         animator = GetComponent<Animator>();
@@ -53,7 +45,12 @@ public class PlayerController : MonoBehaviour
 
     public void SetPlayerColor(Color newColor)
     {
+        PlayerColor = newColor;
         GetComponent<MeshRenderer>().material.SetColor("_Color", newColor);
+    }
+    public Color GetPlayerColor()
+    {
+        return PlayerColor;
     }
 
 }
