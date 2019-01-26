@@ -398,17 +398,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 102790267}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 138747304bb06164e942522a2813e1da, type: 3}
+  m_Script: {fileID: 11500000, guid: c02cc9c5d476d23408b7b94680989094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 581722222582498539, guid: b74c812832fc3aa4f85d96849e4aa985, type: 3}
+  - {fileID: 581722222582498536, guid: b74c812832fc3aa4f85d96849e4aa985, type: 3}
   locations:
   - {fileID: 2119144152}
   - {fileID: 600468808}
   - {fileID: 561331679}
   - {fileID: 861095092}
   parent: {fileID: 2101216200}
+  colors:
+  - {r: 1, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0.33720446, b: 1, a: 0}
+  - {r: 0.08514191, g: 0.8018868, b: 0, a: 0}
+  - {r: 0.95995486, g: 1, b: 0, a: 0}
 --- !u!4 &102790269
 Transform:
   m_ObjectHideFlags: 0
