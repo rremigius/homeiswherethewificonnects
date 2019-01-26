@@ -1,39 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class GameController : MonoBehaviour
 {
-    public Transform InteractiveObjectGrouper;
-
-    private InteractiveObject[] IOArray;
-
+    public int numberOfPlayers = 4;
+    public Spawner playerSpawner;
+    private TaskManager MyTaskManager;
 
     void Start()
     {
-        GatherInteractiveObjects();
-
+        Assert.IsNotNull(playerSpawner);
+        var Players = playerSpawner.Spawn(numberOfPlayers);
+        MyTaskManager = GetComponent<TaskManager>();
     }
 
 
     void Update()
     {
-        //TODO Set interactive object target for a player
+       
     }
 
 
-    //get all interactive objects that are parented to the IOGrouper
-    void GatherInteractiveObjects()
-    {
-        if (InteractiveObjectGrouper != null)
-        {
-            IOArray = InteractiveObjectGrouper.GetComponentsInChildren<InteractiveObject>();
-            if (IOArray.Length == 0) { Debug.LogWarning("No interactive objects found under interactive object grouper"); }
-        }
-        else
-        {
-            Debug.LogWarning("No Interactive Objects grouper reference set on game controller");
-        }
-        return;
-    }
+    
 }
