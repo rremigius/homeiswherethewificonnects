@@ -19,6 +19,7 @@ public class Scoreboard : MonoBehaviour
         playerScores.Add(3, GameObject.Find("playerScore3").GetComponent<Text>());
         playerScores.Add(4, GameObject.Find("playerScore4").GetComponent<Text>());
         NewGame();
+        EventBus.OnPlayerScored += AddPlayerPoints;
     }
 
     // Update is called once per frame
@@ -26,7 +27,6 @@ public class Scoreboard : MonoBehaviour
     {
 
     }
-
 
     public void NewGame()
     {
@@ -37,15 +37,16 @@ public class Scoreboard : MonoBehaviour
         teamScoreField.text = "0";
     }
 
-    public void AddTeamPoints(int points)
-    {
-        teamScoreField.text = (Convert.ToInt32(teamScoreField.text) + points).ToString();
-    }
-
-
+    
     public void AddPlayerPoints(PlayerController player, int points)
     {
         Text textField = playerScores.First(x => x.Key == player.id).Value;
         textField.text = (Convert.ToInt32(textField.text) + points).ToString();
+        AddTeamPoints(points);
+
+    }
+    public void AddTeamPoints(int points)
+    {
+        teamScoreField.text = (Convert.ToInt32(teamScoreField.text) + points).ToString();
     }
 }

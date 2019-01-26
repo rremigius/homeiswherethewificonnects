@@ -17,13 +17,9 @@ public class GameController : MonoBehaviour
         List<PlayerController> Players = playerSpawner.Spawn(numberOfPlayers);
         MyTaskManager = GetComponent<TaskManager>();
         MyTaskManager.StartTaskManager(Players);
-        EventBus.OnPlayerScored += Test;
+        
     }
 
-    void Test(PlayerController PC, float Score)
-    {
-        Debug.Log("gescoord");
-    }
 
     void Update()
     {

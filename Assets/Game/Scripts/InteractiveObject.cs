@@ -13,7 +13,7 @@ public class InteractiveObject : MonoBehaviour
     public bool IsTaskInProgress { get; private set; } = false;
     public float TaskDuration = 1;
     public float CooldownDuration = 5;
-    public float Points = 10;
+    public int Points = 10;
     
 
     private PlayerController PC;
