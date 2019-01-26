@@ -13,12 +13,15 @@ public class InteractiveObject : MonoBehaviour
     public bool IsAssigned { get; private set; } = false;
     public bool IsTaskInProgress { get; private set; } = false;
     public float TaskDuration = 1;
+    public float CooldownDuration = 5;
     public float Points = 10;
     
 
     private PlayerController PC;
-    private float TargetTime;
-    private bool TimerActive = false;
+    private float TaskTargetTime;
+    private float CooldownTargetTime;
+    private bool TaskTimerActive = false;
+    private bool CooldownTimerActive = false;
     private Color UnhighlightedColor = new Color(0, 0, 0, 0);
 
     void Start()
@@ -27,11 +30,16 @@ public class InteractiveObject : MonoBehaviour
     }
     void Update()
     {
-        if (TimerActive && Time.time >= TargetTime) {
-                TimerActive = false;
+        if (TaskTimerActive && Time.time >= TaskTargetTime) {
+                TaskTimerActive = false;
                 TaskCompleted();
         }
-        
+        if (CooldownTimerActive && Time.time >= CooldownTargetTime)
+        {
+            CooldownTimerActive = false;
+            CooldownCompleted();
+        }
+
     }
 
     //Arms this interactive object with a char reference and a highlight, it can now be overlapped with
@@ -63,8 +71,8 @@ public class InteractiveObject : MonoBehaviour
         PC.LockPlayer();
         
         //Activate minigame
-        TargetTime = Time.time + TaskDuration;
-        TimerActive = true;
+        TaskTargetTime = Time.time + TaskDuration;
+        TaskTimerActive = true;
         
     }
 
@@ -77,10 +85,19 @@ public class InteractiveObject : MonoBehaviour
 
     void Reset()
     {
+        assignedPlayer.HasTaskAssigned = false;
         assignedPlayer = null;
         IsTaskInProgress = false;
-        IsAssigned = false;
+
+        CooldownTargetTime = Time.time + CooldownDuration;
+        CooldownTimerActive = true;
+
         SetColor(UnhighlightedColor);
+    }
+
+    void CooldownCompleted()
+    {
+        IsAssigned = false;
     }
 
     void SetColor(Color newColor)
