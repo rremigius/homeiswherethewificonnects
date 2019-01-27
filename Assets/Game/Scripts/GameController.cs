@@ -6,19 +6,23 @@ using UnityEngine.Assertions;
 public class GameController : MonoBehaviour
 {
     public int numberOfPlayers = 4;
-    private PlayerSpawner playerSpawner;
-    private TaskManager MyTaskManager;
+    public GameObject menu;
+    
+    PlayerSpawner playerSpawner;
+    TaskManager MyTaskManager;
     
     List<PlayerController> players = new List<PlayerController>();
 
     void Start()
     {
         playerSpawner = GetComponent<PlayerSpawner>();
+
         Assert.IsNotNull(playerSpawner);
+        Assert.IsNotNull(menu);
 
         EventBus.OnVanCrashed += OnVanCrashed;
 
-        Reset();
+        menu.SetActive(true);
     }
 
     void Update()
@@ -30,7 +34,7 @@ public class GameController : MonoBehaviour
         EventBus.FireGameOver();
     }
 
-    public void Reset() {
+    public void NewGame() {
         foreach(PlayerController player in players) {
             Destroy(player.gameObject);
         }
@@ -38,6 +42,8 @@ public class GameController : MonoBehaviour
         players = playerSpawner.Spawn(numberOfPlayers);
         MyTaskManager = GetComponent<TaskManager>();
         MyTaskManager.StartTaskManager(players);
+
+        menu.SetActive(false);
 
         EventBus.FireNewGame();
     }
