@@ -14,14 +14,26 @@ public class TerrainGenerator : MonoBehaviour
 
     public List<TerrainObject> prefabs;
     
-    MeshFilter terrain;
+    MeshFilter meshFilter;
     Bounds bounds;
     Bounds boundsWorld;
 
+    Transform terrainParent;
+
     void Start() {
-        terrain = GetComponent<MeshFilter>();
-        bounds = terrain.mesh.bounds;
+        meshFilter = GetComponent<MeshFilter>();
+        bounds = meshFilter.mesh.bounds;
         boundsWorld = new Bounds(transform.TransformPoint(bounds.center), transform.TransformPoint(bounds.size));
+
+        GameObject terrain = new GameObject("Terrain");
+        terrain.transform.parent = transform;
+        terrainParent = terrain.transform;
+
+        terrainParent.transform.localPosition = Vector3.zero;
+        terrainParent.transform.localScale = new Vector3(1,1,1);
+        terrainParent.transform.rotation = transform.rotation;
+
+        EventBus.OnNewGame += Reset;
 
         Generate();
     }
@@ -36,8 +48,16 @@ public class TerrainGenerator : MonoBehaviour
 
     void Spawn(GameObject prefab, Vector3 position) {
         GameObject instance = Instantiate(prefab);
-        instance.transform.parent = transform;
+        instance.transform.parent = terrainParent;
         instance.transform.localPosition = position;
+        instance.transform.rotation = Quaternion.Euler(0, Random.Range(0,359), 0);
+    }
+
+    public void Reset() {
+        foreach (Transform child in terrainParent) {
+            GameObject.Destroy(child.gameObject);
+        }
+        Generate();
     }
 
     public void Generate() {

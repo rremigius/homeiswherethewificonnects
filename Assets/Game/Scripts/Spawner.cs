@@ -37,8 +37,14 @@ public class Spawner<T> : MonoBehaviour where T:MonoBehaviour
         if(spawnOnStart > 0) {
             Spawn(spawnOnStart);
         }
+
+        EventBus.OnNewGame += Reset;
     }
     virtual protected void Init() {}
+
+    public void Reset() {
+        next = 0;
+    }
 
     T CreateNewObject() {
         int objIndex = next % prefabs.Count;

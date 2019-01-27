@@ -86,7 +86,7 @@ public class InteractiveObject : MonoBehaviour
     void TaskCompleted()
     {
         PC.UnlockPlayer();
-        EventBus.PlayerScored(PC, Points);
+        EventBus.FirePlayerScored(PC, Points);
         Reset();
     }
 
