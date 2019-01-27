@@ -26,6 +26,7 @@ public class InteractiveObject : MonoBehaviour
     void Start()
     {
         //TODO check if box component available of requirement/required component bovenaan class
+        EventBus.OnNewGame += Reset;
     }
     void Update()
     {
@@ -86,13 +87,14 @@ public class InteractiveObject : MonoBehaviour
     void TaskCompleted()
     {
         PC.UnlockPlayer();
+        assignedPlayer.HasTaskAssigned = false;
         EventBus.FirePlayerScored(PC, Points);
         Reset();
     }
 
     void Reset()
     {
-        assignedPlayer.HasTaskAssigned = false;
+        
         assignedPlayer = null;
         IsTaskInProgress = false;
 
