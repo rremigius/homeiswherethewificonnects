@@ -7,13 +7,13 @@ public class Van : MonoBehaviour
 {
     public float health = 1;
     
-    bool _crashed = false;
-    bool crashed { 
-        get => _crashed; 
+    bool _alive = false;
+    public bool alive { 
+        get => _alive; 
         set { 
-            _crashed = value;
-            body.isKinematic = crashed;
-            if(crashed) {
+            _alive = value;
+            body.isKinematic = !alive;
+            if(!alive) {
                 body.velocity = Vector3.zero;
                 body.angularVelocity = Vector3.zero;
             }
@@ -29,17 +29,19 @@ public class Van : MonoBehaviour
         body = GetComponent<Rigidbody>();
         startPosition = transform.position;
         EventBus.OnNewGame += OnNewGame;
+
+        alive = false;
     }
 
     void OnNewGame() {
         transform.position = startPosition;
-        crashed = false;
+        alive = true;
     }
 
     public void ApplyDamage(float damage) {
         health -= damage;
         if(health <= 0) {
-            crashed = true;
+            alive = false;
             EventBus.FireVanCrashed(this);
         }
     }
