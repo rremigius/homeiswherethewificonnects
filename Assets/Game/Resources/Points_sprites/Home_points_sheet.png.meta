@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 559e3b310573a4f60ad1a03cc974b04b
+guid: b68a7c163a4894ac28fc548673a1ab59
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Yellow_points_glow-sheet_0
-    21300002: Yellow_points_glow-sheet_1
-    21300004: Yellow_points_glow-sheet_2
-    21300006: Yellow_points_glow-sheet_3
-    21300008: Yellow_points_glow-sheet_4
-    21300010: Yellow_points_glow-sheet_5
+    21300000: Home_points_sheet_0
+    21300002: Home_points_sheet_1
+    21300004: Home_points_sheet_2
+    21300006: Home_points_sheet_3
+    21300008: Home_points_sheet_4
+    21300010: Home_points_sheet_5
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Yellow_points_glow-sheet_0
+      name: Home_points_sheet_0
       rect:
         serializedVersion: 2
-        x: 44
+        x: 23
         y: 36
-        width: 104
-        height: 120
+        width: 147
+        height: 131
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,19 +137,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb6455b10aab84af78cdd133df2e806f
+      spriteID: 2f94c270f7f064b57ba6cf6df1959627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Yellow_points_glow-sheet_1
+      name: Home_points_sheet_1
       rect:
         serializedVersion: 2
-        x: 244
+        x: 223
         y: 36
-        width: 104
-        height: 120
+        width: 147
+        height: 131
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,19 +157,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58427290b34464917b9b7713d40ca7da
+      spriteID: ca917af28c6b9445fb66fe8af0906497
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Yellow_points_glow-sheet_2
+      name: Home_points_sheet_2
       rect:
         serializedVersion: 2
-        x: 444
+        x: 423
         y: 36
-        width: 104
-        height: 120
+        width: 147
+        height: 131
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,19 +177,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0587e5aaa6914a28aa77c793579ade8
+      spriteID: 6eff8ba58859945e786996c5e79ea3d4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Yellow_points_glow-sheet_3
+      name: Home_points_sheet_3
       rect:
         serializedVersion: 2
-        x: 652
+        x: 623
         y: 36
-        width: 104
-        height: 120
+        width: 147
+        height: 131
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,19 +197,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ff42398257734a85ae5d7821ab35c35
+      spriteID: 0342e9b920ee44fa2b2756b5794c40b4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Yellow_points_glow-sheet_4
+      name: Home_points_sheet_4
       rect:
         serializedVersion: 2
-        x: 844
+        x: 823
         y: 36
-        width: 104
-        height: 120
+        width: 147
+        height: 131
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,19 +217,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18eb32868203346de9c08fb55450ea40
+      spriteID: 29433c091189d4c078b661ad5a3a0fa3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Yellow_points_glow-sheet_5
+      name: Home_points_sheet_5
       rect:
         serializedVersion: 2
-        x: 1044
+        x: 1023
         y: 36
-        width: 104
-        height: 120
+        width: 147
+        height: 131
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,7 +237,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a080dd82146441099aeb6cbed64d339
+      spriteID: 48e3b4b1a6537446ca0c013e45a6f5f1
       vertices: []
       indices: 
       edges: []
@@ -245,7 +245,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5af91649ee3504db99b5acfda2b4de72
+    spriteID: 11e4746852a304ec48047cc05ab83fd3
     vertices: []
     indices: 
     edges: []

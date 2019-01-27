@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 559e3b310573a4f60ad1a03cc974b04b
+guid: 0015523f31ff44a91aa4f615590c3f5f
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Yellow_points_glow-sheet_0
-    21300002: Yellow_points_glow-sheet_1
-    21300004: Yellow_points_glow-sheet_2
-    21300006: Yellow_points_glow-sheet_3
-    21300008: Yellow_points_glow-sheet_4
-    21300010: Yellow_points_glow-sheet_5
+    21300000: Red_points_glow-sheet_0
+    21300002: Red_points_glow-sheet_1
+    21300004: Red_points_glow-sheet_2
+    21300006: Red_points_glow-sheet_3
+    21300008: Red_points_glow-sheet_4
+    21300010: Red_points_glow-sheet_5
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Yellow_points_glow-sheet_0
+      name: Red_points_glow-sheet_0
       rect:
         serializedVersion: 2
         x: 44
@@ -137,13 +137,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb6455b10aab84af78cdd133df2e806f
+      spriteID: 789a3a93ac1b64277b08ddefa8d2378a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Yellow_points_glow-sheet_1
+      name: Red_points_glow-sheet_1
       rect:
         serializedVersion: 2
         x: 244
@@ -157,13 +157,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58427290b34464917b9b7713d40ca7da
+      spriteID: 92b6f8e1f5ee544bea0876204d0d9bf8
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Yellow_points_glow-sheet_2
+      name: Red_points_glow-sheet_2
       rect:
         serializedVersion: 2
         x: 444
@@ -177,16 +177,16 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0587e5aaa6914a28aa77c793579ade8
+      spriteID: 6c3231c696d2a4c04b7e4bb135d370ce
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Yellow_points_glow-sheet_3
+      name: Red_points_glow-sheet_3
       rect:
         serializedVersion: 2
-        x: 652
+        x: 644
         y: 36
         width: 104
         height: 120
@@ -197,13 +197,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ff42398257734a85ae5d7821ab35c35
+      spriteID: 8a24ba203a1ef491bb6e22e2b4d0eb6c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Yellow_points_glow-sheet_4
+      name: Red_points_glow-sheet_4
       rect:
         serializedVersion: 2
         x: 844
@@ -217,13 +217,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18eb32868203346de9c08fb55450ea40
+      spriteID: 74f8e07103d374c538d3801f5d7f8e55
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Yellow_points_glow-sheet_5
+      name: Red_points_glow-sheet_5
       rect:
         serializedVersion: 2
         x: 1044
@@ -237,7 +237,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a080dd82146441099aeb6cbed64d339
+      spriteID: 8c2fde5eefe1b4750997207369853a64
       vertices: []
       indices: 
       edges: []
@@ -245,7 +245,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5af91649ee3504db99b5acfda2b4de72
+    spriteID: ee9a05096f04e4b57b7d1aa07ed6d8d1
     vertices: []
     indices: 
     edges: []
