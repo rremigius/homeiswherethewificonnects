@@ -15,7 +15,6 @@ public class TaskManager : MonoBehaviour
     {
         Active = true;
         Players = activePlayers;
-      
     }
     
     
@@ -31,7 +30,6 @@ public class TaskManager : MonoBehaviour
         if (Active)
         {
             AssignTasks();
-
         }
     }
 
