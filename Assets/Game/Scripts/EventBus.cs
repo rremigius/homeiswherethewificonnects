@@ -19,6 +19,13 @@ public class EventBus
     public delegate void NewGame();
     public static event NewGame OnNewGame;
 
+    public delegate void Victory();
+    public static event Victory OnVictory;
+
+    public static void FireVictory() {
+        if (OnVictory != null) OnVictory();
+    }
+
     public static void FirePlayerScored(PlayerController Player, int Score) {
         if (OnPlayerScored != null) OnPlayerScored(Player, Score);
     }

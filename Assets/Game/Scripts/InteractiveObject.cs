@@ -41,7 +41,7 @@ public class InteractiveObject : MonoBehaviour
             }
         }
             
-        if (CooldownTimerActive && Time.time >= CooldownTargetTime)
+        if ((CooldownTimerActive) && (Time.time >= CooldownTargetTime))
         {
             CooldownTimerActive = false;
             CooldownCompleted();
@@ -90,18 +90,20 @@ public class InteractiveObject : MonoBehaviour
         assignedPlayer.HasTaskAssigned = false;
         EventBus.FirePlayerScored(PC, Points);
         Reset();
+        StartCooldown();
     }
 
     void Reset()
     {
-        
         assignedPlayer = null;
         IsTaskInProgress = false;
+        SetColor(UnhighlightedColor);
+    }
 
+    void StartCooldown()
+    {
         CooldownTargetTime = Time.time + CooldownDuration;
         CooldownTimerActive = true;
-
-        SetColor(UnhighlightedColor);
     }
 
     void CooldownCompleted()

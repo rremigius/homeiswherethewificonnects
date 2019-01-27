@@ -7,6 +7,9 @@ public class GameController : MonoBehaviour
 {
     public int numberOfPlayers = 4;
     public GameObject menu;
+    private float SongLength = 20;
+    private float victoryTime;
+    private bool PlayingGame;
     
     PlayerSpawner playerSpawner;
     TaskManager MyTaskManager;
@@ -27,11 +30,18 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-       
+        if((PlayingGame) && (Time.time >= victoryTime))
+        {
+            EventBus.FireVictory();
+            PlayingGame = false;
+        }
     }
+
+    
 
     void OnVanCrashed(Van van) {
         EventBus.FireGameOver();
+        PlayingGame = false;
     }
 
     public void NewGame() {
@@ -42,6 +52,8 @@ public class GameController : MonoBehaviour
         players = playerSpawner.Spawn(numberOfPlayers);
         MyTaskManager = GetComponent<TaskManager>();
         MyTaskManager.StartTaskManager(players);
+        victoryTime = Time.time + SongLength;
+        PlayingGame = true;
 
         menu.SetActive(false);
 
