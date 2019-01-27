@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private Color PlayerColor;
     private Animator animator;
     private bool _isRunning;
+    private bool isGameOver = false;
 
     public bool isRunning {
         get => _isRunning;
@@ -26,12 +27,14 @@ public class PlayerController : MonoBehaviour
 
     void Start() {
         animator = GetComponent<Animator>();
+        EventBus.OnGameOver += StopPlayer;
+        //EventBus.OnNewGame
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (IsWorkingOnTask == false)
+        if ((IsWorkingOnTask == false) && (isGameOver == false))
         {
             MoveCharacter();
         }
@@ -55,6 +58,11 @@ public class PlayerController : MonoBehaviour
     public Color GetPlayerColor()
     {
         return PlayerColor;
+    }
+    void StopPlayer()
+    {
+        isGameOver = true;
+        isRunning = false;
     }
 
 }
