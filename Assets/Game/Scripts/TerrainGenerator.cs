@@ -14,6 +14,9 @@ public class TerrainGenerator : MonoBehaviour
 
     public List<TerrainObject> prefabs;
     
+    public Transform clearArea;
+    public float clearRadius = 5;
+    
     MeshFilter meshFilter;
     Bounds bounds;
     Bounds boundsWorld;
@@ -32,6 +35,10 @@ public class TerrainGenerator : MonoBehaviour
         terrainParent.transform.localPosition = Vector3.zero;
         terrainParent.transform.localScale = new Vector3(1,1,1);
         terrainParent.transform.rotation = transform.rotation;
+
+        if(clearArea == null) {
+            clearArea = transform;
+        }
 
         EventBus.OnNewGame += Reset;
 
@@ -53,6 +60,13 @@ public class TerrainGenerator : MonoBehaviour
         instance.transform.rotation = Quaternion.Euler(0, Random.Range(0,359), 0);
     }
 
+    bool IsWithinClearArea(Vector3 position) {
+        Vector3 clearPosition = transform.TransformPoint(position);
+        float distance = Vector3.Distance(clearArea.position, clearPosition);
+
+        return distance < clearRadius;
+    }
+
     public void Reset() {
         foreach (Transform child in terrainParent) {
             GameObject.Destroy(child.gameObject);
@@ -70,6 +84,10 @@ public class TerrainGenerator : MonoBehaviour
 
             for(int i = 0; i < quantity; i++) {
                 Vector3 position = GetRandomPosition();
+                if(IsWithinClearArea(position)) {
+                    continue;
+                }
+
                 Spawn(obj.prefab, position);
             }
         }
